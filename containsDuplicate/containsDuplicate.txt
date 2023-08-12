@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function(nums) {
+    
+    const hashMap = new Map();
+    
+    for(let i=0; i< nums.length; i++){
+        
+        if(hashMap.has(nums[i])){
+            if(hashMap.get(nums[i]) <= 1){
+                hashMap.set(nums[i],hashMap.get(nums[i]) + 1);
+                if(hashMap.get(nums[i]) >= 2)
+                    return true;
+            }else{
+                return true;
+            }
+        }else{
+            hashMap.set(nums[i], 1)
+        }
+    }
+    return false;
+};
